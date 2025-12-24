@@ -36,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <meta name="google-adsense-account" content="ca-pub-4113419530280094" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
