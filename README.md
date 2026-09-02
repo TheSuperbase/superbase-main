@@ -51,8 +51,8 @@ pipx run --spec "fonttools[woff]" pyftsubset PretendardVariable.woff2 \
 
 ## 배포 후 확인
 
-- Vercel 도메인 설정에서 `www.superbaseapp.com` → `superbaseapp.com` 리다이렉트
-- Google Search Console에 `https://superbaseapp.com/sitemap.xml` 제출
+- 대표 도메인은 `www.superbaseapp.com` (Vercel이 apex → www 리다이렉트). 바꾸려면 Vercel 도메인 설정과 `content/site.ts`의 url을 함께 수정
+- Google Search Console에 `https://www.superbaseapp.com/sitemap.xml` 제출
 - 각 제품 푸터에서 superbaseapp.com으로 링크
 
 ## 연락

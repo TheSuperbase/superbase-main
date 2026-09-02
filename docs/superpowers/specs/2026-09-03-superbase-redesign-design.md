@@ -192,7 +192,7 @@ export type Product = {
 - 루트 `title.default`: "슈퍼베이스 (Superbase) | 혼자 만들고 직접 운영하는 1인 메이커". 템플릿: "%s | 슈퍼베이스".
 - `app/opengraph-image.tsx`로 텍스트 기반 OG 이미지를 생성한다. 상세 페이지는 이름과 한 줄 설명을 넣는다.
 - JSON-LD: 루트에 `Organization`(name, alternateName "Superbase", url, email, sameAs에 소셜)과 `WebSite`. 상세 페이지에 `SoftwareApplication` 또는 `Brand`.
-- `www.superbaseapp.com`과 `superbaseapp.com` 중 하나로 통일한다. 현재 검색에는 www가 노출되므로 Vercel 도메인 설정에서 www 없는 쪽으로 리다이렉트를 확인한다. 코드에서는 `superbaseapp.com`을 canonical로 쓴다.
+- `www.superbaseapp.com`과 `superbaseapp.com` 중 하나로 통일한다. Vercel이 apex를 www로 리다이렉트하고 검색 노출도 www이므로, 코드의 canonical과 sitemap은 `https://www.superbaseapp.com`을 쓴다. apex를 대표로 바꾸려면 Vercel 도메인 설정을 바꾼 뒤 `content/site.ts`의 url만 고친다.
 - 배포 후 할 일(코드 밖): Google Search Console에 sitemap 제출, 오늘의모임 푸터에서 superbaseapp.com으로 링크 요청.
 
 ## 7. 유지하는 것
@@ -245,3 +245,4 @@ export type Product = {
 - 페이지별 OpenGraph는 lib/metadata.ts의 pageMetadata로 통일.
 - 옛 URL(/services/*, /terms)은 next.config.ts에서 308 리다이렉트.
 - 보류: 개인정보처리방침에서 각 제품의 자체 방침 링크는 제품 데이터에 URL 필드가 생긴 뒤 연결.
+- 배포 후 확인: Vercel이 apex → www로 리다이렉트하므로 `site.url`을 www로 통일 (canonical, sitemap, OG url, JSON-LD 모두 여기서 파생).

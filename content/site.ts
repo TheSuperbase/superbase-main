@@ -2,7 +2,7 @@
 export const site = {
   name: "슈퍼베이스",
   nameEn: "Superbase",
-  url: "https://superbaseapp.com",
+  url: "https://www.superbaseapp.com",
   email: "tube@thesuperbase.com",
   tagline: "혼자 만들고 직접 운영하는 1인 메이커",
   description:
