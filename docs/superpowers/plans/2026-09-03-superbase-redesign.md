@@ -1,6 +1,6 @@
 # 슈퍼베이스 웹사이트 리디자인 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** superbaseapp.com을 "혼자 만들고 직접 운영하는 1인 메이커" 슈퍼베이스의 사이트로 처음부터 다시 만든다. 에디토리얼 미니멀 디자인, 브랜드 > 제품 계층 데이터, SEO 기반을 갖춘다.
 
@@ -66,7 +66,7 @@ Claude-Session: https://claude.ai/code/session_01LBz1tc9xA2EBdTaFsMHMs8
 - Modify: `package.json`
 - Delete: `planning.md`, `public/file.svg`, `public/globe.svg`, `public/next.svg`, `public/vercel.svg`, `public/window.svg`
 
-- [ ] **Step 1: 의존성 설치와 현재 빌드 확인**
+- [x] **Step 1: 의존성 설치와 현재 빌드 확인**
 
 Run:
 ```bash
@@ -76,7 +76,7 @@ pnpm build 2>&1 | tail -15
 ```
 Expected: `✓ Compiled successfully` 와 라우트 목록. 실패하면 원인을 먼저 고친다.
 
-- [ ] **Step 2: vitest 추가**
+- [x] **Step 2: vitest 추가**
 
 Run:
 ```bash
@@ -95,7 +95,7 @@ pnpm add -D vitest@^3
 }
 ```
 
-- [ ] **Step 3: 스모크 테스트로 러너 확인**
+- [x] **Step 3: 스모크 테스트로 러너 확인**
 
 Create `lib/smoke.test.ts`:
 ```ts
@@ -113,14 +113,14 @@ Expected: `1 passed`
 
 삭제: `rm lib/smoke.test.ts`
 
-- [ ] **Step 4: 쓰지 않는 파일 제거**
+- [x] **Step 4: 쓰지 않는 파일 제거**
 
 Run:
 ```bash
 git rm -q planning.md public/file.svg public/globe.svg public/next.svg public/vercel.svg public/window.svg
 ```
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add package.json pnpm-lock.yaml
@@ -134,7 +134,7 @@ git commit -m "chore: vitest 추가, 기본 자산과 planning.md 제거"
 **Files:**
 - Create: `content/site.ts`, `content/now.ts`, `content/work.ts`
 
-- [ ] **Step 1: site.ts 작성**
+- [x] **Step 1: site.ts 작성**
 
 ```ts
 // content/site.ts
@@ -155,7 +155,7 @@ export const site = {
 export type Site = typeof site;
 ```
 
-- [ ] **Step 2: now.ts 작성**
+- [x] **Step 2: now.ts 작성**
 
 ```ts
 // content/now.ts
@@ -165,7 +165,7 @@ export const now = {
 };
 ```
 
-- [ ] **Step 3: work.ts 작성**
+- [x] **Step 3: work.ts 작성**
 
 ```ts
 // content/work.ts
@@ -253,12 +253,12 @@ export const products: Product[] = [
 ];
 ```
 
-- [ ] **Step 4: 타입 검사**
+- [x] **Step 4: 타입 검사**
 
 Run: `pnpm exec tsc --noEmit`
 Expected: 오류 없음
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add content
@@ -272,7 +272,7 @@ git commit -m "feat: 사이트, Now, 브랜드/제품 콘텐츠 데이터 추가
 **Files:**
 - Create: `lib/work.ts`, `lib/work.test.ts`, `lib/date.ts`, `lib/date.test.ts`
 
-- [ ] **Step 1: 실패하는 테스트 작성**
+- [x] **Step 1: 실패하는 테스트 작성**
 
 Create `lib/work.test.ts`:
 ```ts
@@ -404,12 +404,12 @@ describe("formatPeriod", () => {
 });
 ```
 
-- [ ] **Step 2: 테스트 실패 확인**
+- [x] **Step 2: 테스트 실패 확인**
 
 Run: `pnpm test`
 Expected: FAIL, `Cannot find module './work'` 또는 `'./date'`
 
-- [ ] **Step 3: 구현**
+- [x] **Step 3: 구현**
 
 Create `lib/date.ts`:
 ```ts
@@ -492,12 +492,12 @@ export function workPath(slug: string): string {
 }
 ```
 
-- [ ] **Step 4: 테스트 통과 확인**
+- [x] **Step 4: 테스트 통과 확인**
 
 Run: `pnpm test`
 Expected: 모든 테스트 PASS (work 8개, date 4개)
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add lib
@@ -511,7 +511,7 @@ git commit -m "feat: 브랜드/제품 정렬·그룹핑과 날짜 포맷 유틸 
 **Files:**
 - Create: `lib/jsonld.ts`, `lib/jsonld.test.ts`
 
-- [ ] **Step 1: 실패하는 테스트 작성**
+- [x] **Step 1: 실패하는 테스트 작성**
 
 Create `lib/jsonld.test.ts`:
 ```ts
@@ -608,12 +608,12 @@ describe("workJsonLd", () => {
 });
 ```
 
-- [ ] **Step 2: 테스트 실패 확인**
+- [x] **Step 2: 테스트 실패 확인**
 
 Run: `pnpm test`
 Expected: FAIL, `Cannot find module './jsonld'`
 
-- [ ] **Step 3: 구현**
+- [x] **Step 3: 구현**
 
 Create `lib/jsonld.ts`:
 ```ts
@@ -676,12 +676,12 @@ export function workJsonLd(work: Work, site: SiteInfo) {
 }
 ```
 
-- [ ] **Step 4: 테스트 통과 확인**
+- [x] **Step 4: 테스트 통과 확인**
 
 Run: `pnpm test`
 Expected: 모두 PASS
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add lib/jsonld.ts lib/jsonld.test.ts
@@ -699,7 +699,7 @@ git commit -m "feat: Organization, WebSite, 상세 페이지 JSON-LD 생성기 �
 
 시작 전에 `frontend-design:frontend-design`, `emil-design-eng`, `ui-ux-pro-max:ui-ux-pro-max` 스킬을 로드한다.
 
-- [ ] **Step 1: 폰트 다운로드**
+- [x] **Step 1: 폰트 다운로드**
 
 Run:
 ```bash
@@ -712,14 +712,14 @@ ls -la app/fonts && file app/fonts/*
 ```
 Expected: woff2는 약 2MB이고 `Web Open Font Format (Version 2)`, otf는 약 1MB 이상이고 `OpenType font data`. 둘 중 하나라도 HTML(404 페이지)이면 https://github.com/orioncactus/pretendard/releases 에서 v1.3.9 zip을 받아 같은 경로에 푼다.
 
-- [ ] **Step 2: 기존 파일 제거**
+- [x] **Step 2: 기존 파일 제거**
 
 Run:
 ```bash
 git rm -rq app/services app/terms components/ServiceCard.tsx
 ```
 
-- [ ] **Step 3: globals.css 교체**
+- [x] **Step 3: globals.css 교체**
 
 `app/globals.css` 전체를 다음으로 교체:
 ```css
@@ -799,7 +799,7 @@ body {
 }
 ```
 
-- [ ] **Step 4: NavLink, Header, Footer, JsonLd 작성**
+- [x] **Step 4: NavLink, Header, Footer, JsonLd 작성**
 
 Create `components/NavLink.tsx`:
 ```tsx
@@ -887,7 +887,7 @@ export default function JsonLd({ data }: { data: object | object[] }) {
 }
 ```
 
-- [ ] **Step 5: layout.tsx 교체**
+- [x] **Step 5: layout.tsx 교체**
 
 `app/layout.tsx` 전체를 다음으로 교체:
 ```tsx
@@ -946,7 +946,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 }
 ```
 
-- [ ] **Step 6: 임시 홈으로 빌드 확인**
+- [x] **Step 6: 임시 홈으로 빌드 확인**
 
 `app/page.tsx` 전체를 임시로 교체 (Task 7에서 다시 쓴다):
 ```tsx
@@ -961,7 +961,7 @@ Expected: lint 오류 없음, 빌드 성공. 라우트에 `/`, `/about`, `/conta
 Run: `grep -c "cdn.jsdelivr" app/layout.tsx`
 Expected: `0`
 
-- [ ] **Step 7: 커밋**
+- [x] **Step 7: 커밋**
 
 ```bash
 git add -A app components
@@ -977,7 +977,7 @@ git commit -m "feat: Pretendard 로컬 폰트, 디자인 토큰, 새 레이아�
 
 시작 전에 `frontend-design:frontend-design`, `emil-design-eng`, `ui-ux-pro-max:ui-ux-pro-max` 스킬을 로드한다.
 
-- [ ] **Step 1: Reveal, Section, Prose 작성**
+- [x] **Step 1: Reveal, Section, Prose 작성**
 
 Create `components/Reveal.tsx`:
 ```tsx
@@ -1036,7 +1036,7 @@ export default function Prose({ paragraphs }: { paragraphs: string[] }) {
 }
 ```
 
-- [ ] **Step 2: StatusBadge 작성**
+- [x] **Step 2: StatusBadge 작성**
 
 Create `components/StatusBadge.tsx`:
 ```tsx
@@ -1061,7 +1061,7 @@ export default function StatusBadge({ status }: { status: Status }) {
 }
 ```
 
-- [ ] **Step 3: WorkList 작성**
+- [x] **Step 3: WorkList 작성**
 
 Create `components/WorkList.tsx`:
 ```tsx
@@ -1128,12 +1128,12 @@ export default function WorkList({ groups = groupWork() }: { groups?: WorkGroup[
 }
 ```
 
-- [ ] **Step 4: 타입 검사와 lint**
+- [x] **Step 4: 타입 검사와 lint**
 
 Run: `pnpm exec tsc --noEmit && pnpm lint`
 Expected: 오류 없음
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add components
@@ -1149,7 +1149,7 @@ git commit -m "feat: Section, StatusBadge, WorkList, Reveal, Prose 컴포넌트"
 
 시작 전에 `frontend-design:frontend-design`, `emil-design-eng`, `ui-ux-pro-max:ui-ux-pro-max` 스킬을 로드한다.
 
-- [ ] **Step 1: page.tsx 작성**
+- [x] **Step 1: page.tsx 작성**
 
 `app/page.tsx` 전체를 교체:
 ```tsx
@@ -1241,18 +1241,18 @@ export default function Home() {
 }
 ```
 
-- [ ] **Step 2: 개발 서버로 확인**
+- [x] **Step 2: 개발 서버로 확인**
 
 Run (백그라운드): `pnpm dev`
 브라우저 또는 `curl -s http://localhost:3000 | grep -o "혼자 만들고" | head -1`
 Expected: 문자열 출력. 화면에서 히어로, NOW, 만든 것들(오늘 아래 오늘의모임·오늘의대회, 단독 제품 아래 배드민턴 대회 캘린더 흐리게), 연락 순서 확인. 375px 폭에서 가로 스크롤 없음. 시스템 다크 모드에서 배경 #0a0a0a.
 
-- [ ] **Step 3: lint와 빌드**
+- [x] **Step 3: lint와 빌드**
 
 Run: `pnpm lint && pnpm build 2>&1 | tail -5`
 Expected: 성공
 
-- [ ] **Step 4: 커밋**
+- [x] **Step 4: 커밋**
 
 ```bash
 git add app/page.tsx
@@ -1268,7 +1268,7 @@ git commit -m "feat: 홈 페이지 (히어로, Now, 만든 것들, 연락)"
 
 시작 전에 `frontend-design:frontend-design`, `emil-design-eng` 스킬을 로드한다.
 
-- [ ] **Step 1: 상세 페이지 작성**
+- [x] **Step 1: 상세 페이지 작성**
 
 Create `app/work/[slug]/page.tsx`:
 ```tsx
@@ -1380,7 +1380,7 @@ export default async function WorkPage({ params }: { params: Params }) {
 }
 ```
 
-- [ ] **Step 2: 404 페이지 작성**
+- [x] **Step 2: 404 페이지 작성**
 
 Create `app/not-found.tsx`:
 ```tsx
@@ -1399,7 +1399,7 @@ export default function NotFound() {
 }
 ```
 
-- [ ] **Step 3: 빌드와 정적 생성 확인**
+- [x] **Step 3: 빌드와 정적 생성 확인**
 
 Run: `pnpm lint && pnpm build 2>&1 | grep -E "work/|not-found|✓"`
 Expected: `/work/oneul`, `/work/oneul-moim`, `/work/oneul-daehoe`, `/work/badminton-calendar` 네 개가 정적(SSG)으로 생성됨.
@@ -1409,7 +1409,7 @@ Expected: `404`
 
 브라우저에서 `/work/oneul`에 제품 목록 두 개, `/work/badminton-calendar`에 종료 안내와 오늘의대회 링크, `/work/oneul-moim`에 바로가기 버튼 확인.
 
-- [ ] **Step 4: 커밋**
+- [x] **Step 4: 커밋**
 
 ```bash
 git add app/work app/not-found.tsx
@@ -1425,7 +1425,7 @@ git commit -m "feat: 브랜드/제품 상세 페이지와 404"
 
 시작 전에 `frontend-design:frontend-design`, `emil-design-eng` 스킬을 로드한다.
 
-- [ ] **Step 1: about 교체**
+- [x] **Step 1: about 교체**
 
 `app/about/page.tsx` 전체:
 ```tsx
@@ -1505,7 +1505,7 @@ export default function AboutPage() {
 }
 ```
 
-- [ ] **Step 2: contact 교체**
+- [x] **Step 2: contact 교체**
 
 `app/contact/page.tsx` 전체:
 ```tsx
@@ -1574,7 +1574,7 @@ export default function ContactPage() {
 }
 ```
 
-- [ ] **Step 3: privacy 교체**
+- [x] **Step 3: privacy 교체**
 
 `app/privacy/page.tsx` 전체:
 ```tsx
@@ -1711,7 +1711,7 @@ export default function PrivacyPage() {
 }
 ```
 
-- [ ] **Step 4: lint와 빌드**
+- [x] **Step 4: lint와 빌드**
 
 Run: `pnpm lint && pnpm build 2>&1 | tail -5`
 Expected: 성공. 브라우저에서 세 페이지 확인. `/privacy`에 "회원", "이용약관" 단어가 없는지 확인:
@@ -1719,7 +1719,7 @@ Expected: 성공. 브라우저에서 세 페이지 확인. `/privacy`에 "회원
 Run: `grep -nE "회원|이용약관" app/privacy/page.tsx`
 Expected: 출력 없음
 
-- [ ] **Step 5: 커밋**
+- [x] **Step 5: 커밋**
 
 ```bash
 git add app/about app/contact app/privacy
@@ -1733,7 +1733,7 @@ git commit -m "feat: 소개, 문의, 개인정보처리방침 페이지 재작�
 **Files:**
 - Create: `app/sitemap.ts`, `app/robots.ts`, `lib/og.tsx`, `app/opengraph-image.tsx`, `app/work/[slug]/opengraph-image.tsx`
 
-- [ ] **Step 1: sitemap과 robots**
+- [x] **Step 1: sitemap과 robots**
 
 Create `app/sitemap.ts`:
 ```ts
@@ -1767,7 +1767,7 @@ export default function robots(): MetadataRoute.Robots {
 }
 ```
 
-- [ ] **Step 2: OG 렌더러**
+- [x] **Step 2: OG 렌더러**
 
 Create `lib/og.tsx`:
 ```tsx
@@ -1850,7 +1850,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 }
 ```
 
-- [ ] **Step 3: 확인**
+- [x] **Step 3: 확인**
 
 Run: `pnpm lint && pnpm build 2>&1 | grep -E "sitemap|robots|opengraph|✓|Error"`
 Expected: `/sitemap.xml`, `/robots.txt`, `/opengraph-image`, `/work/[slug]/opengraph-image` 라우트가 생성되고 오류 없음.
@@ -1867,7 +1867,7 @@ Expected: loc 8개(고정 4 + work 4). robots에 `Sitemap: https://superbaseapp.
 Run: `curl -s http://localhost:3000 | grep -o 'application/ld+json' | wc -l`
 Expected: `1` 이상 (레이아웃 JSON-LD)
 
-- [ ] **Step 4: 커밋**
+- [x] **Step 4: 커밋**
 
 ```bash
 git add app/sitemap.ts app/robots.ts lib/og.tsx app/opengraph-image.tsx "app/work/[slug]/opengraph-image.tsx"
@@ -1881,7 +1881,7 @@ git commit -m "feat: sitemap, robots, OG 이미지 생성"
 **Files:**
 - Modify: `README.md`, `Claude.md`
 
-- [ ] **Step 1: README 교체**
+- [x] **Step 1: README 교체**
 
 `README.md` 전체:
 ````markdown
@@ -1933,7 +1933,7 @@ app/       /, /about, /contact, /privacy, /work/[slug], sitemap, robots, OG 이�
 tube@thesuperbase.com
 ````
 
-- [ ] **Step 2: Claude.md 작성**
+- [x] **Step 2: Claude.md 작성**
 
 `Claude.md` 전체:
 ```markdown
@@ -1959,7 +1959,7 @@ tube@thesuperbase.com
 README의 "콘텐츠 갱신" 참고. 브랜드/제품은 `content/work.ts`, Now는 `content/now.ts`, 소셜은 `content/site.ts`.
 ```
 
-- [ ] **Step 3: 최종 검증**
+- [x] **Step 3: 최종 검증**
 
 Run:
 ```bash
@@ -1982,14 +1982,14 @@ Expected: 전부 `200`
 - OS의 "동작 줄이기" 켜면 진입 모션 없음
 - 헤더 "만든 것들" 클릭 시 홈의 해당 섹션으로 스크롤
 
-- [ ] **Step 4: 커밋**
+- [x] **Step 4: 커밋**
 
 ```bash
 git add README.md Claude.md
 git commit -m "docs: README와 Claude.md를 새 구조로 갱신"
 ```
 
-- [ ] **Step 5: 배포 전 체크리스트 (코드 밖, 사용자에게 보고)**
+- [x] **Step 5: 배포 전 체크리스트 (코드 밖, 사용자에게 보고)**
 
 - Vercel에서 www → non-www 리다이렉트 설정 여부
 - Search Console sitemap 제출

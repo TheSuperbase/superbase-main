@@ -241,4 +241,7 @@ export type Product = {
 - 개인정보처리방침 시행일은 `content/site.ts`의 `privacyEffectiveDate`.
 - 폰트는 jsDelivr npm 미러(`npm/pretendard@1.3.9`)에서 받음. GitHub 경로는 404.
 - 스킵 링크, `role="list"`, 404 페이지 메타데이터(noindex) 추가.
+- 폰트 파일 위치는 public/fonts/가 아니라 app/fonts/ (next/font/local 규칙). 본문 폰트는 KS X 1001 한글 + 라틴 서브셋으로 축소.
+- 페이지별 OpenGraph는 lib/metadata.ts의 pageMetadata로 통일.
+- 옛 URL(/services/*, /terms)은 next.config.ts에서 308 리다이렉트.
 - 보류: 개인정보처리방침에서 각 제품의 자체 방침 링크는 제품 데이터에 URL 필드가 생긴 뒤 연결.
