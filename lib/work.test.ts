@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import type { Brand, Product } from "../content/work";
+import { brands, products, type Brand, type Product } from "../content/work";
 import {
   STATUS_LABEL,
   sortProducts,
@@ -97,5 +97,33 @@ describe("findWork / productsOf / allWorkSlugs / workPath", () => {
 
   it("builds the detail path", () => {
     expect(workPath("x")).toBe("/work/x");
+  });
+});
+
+describe("content/work.ts data integrity", () => {
+  const brandSlugs = new Set(brands.map((b) => b.slug));
+  const productSlugs = new Set(products.map((p) => p.slug));
+
+  it("has unique slugs across brands and products", () => {
+    const all = allWorkSlugs(brands, products);
+    expect(new Set(all).size).toBe(all.length);
+  });
+
+  it("every product.brand points to an existing brand", () => {
+    for (const p of products) {
+      if (p.brand) expect(brandSlugs.has(p.brand), `${p.slug} → brand ${p.brand}`).toBe(true);
+    }
+  });
+
+  it("every product.successor points to an existing product", () => {
+    for (const p of products) {
+      if (p.successor) expect(productSlugs.has(p.successor), `${p.slug} → successor ${p.successor}`).toBe(true);
+    }
+  });
+
+  it("ended products have an end date; others do not", () => {
+    for (const p of products) {
+      expect(Boolean(p.period.to), `${p.slug} period.to`).toBe(p.status === "ended");
+    }
   });
 });
