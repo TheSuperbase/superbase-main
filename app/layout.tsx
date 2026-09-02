@@ -1,50 +1,51 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { site } from "@/content/site";
+import { organizationJsonLd, webSiteJsonLd } from "@/lib/jsonld";
+
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  weight: "45 920",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: "슈퍼베이스 (Superbase) - 혁신적인 디지털 서비스",
-    template: "%s | 슈퍼베이스",
+    default: `${site.name} (${site.nameEn}) | ${site.tagline}`,
+    template: `%s | ${site.name}`,
   },
-  description:
-    "슈퍼베이스는 다양한 디지털 서비스를 제공하는 개인사업자입니다. 혁신적이고 사용자 친화적인 웹 서비스를 경험해보세요.",
-  keywords: ["슈퍼베이스", "Superbase", "디지털 서비스", "웹 서비스"],
-  authors: [{ name: "슈퍼베이스" }],
-  creator: "슈퍼베이스",
-  publisher: "슈퍼베이스",
-  robots: {
-    index: true,
-    follow: true,
-  },
+  description: site.description,
+  keywords: [site.name, site.nameEn, "1인 메이커", "오늘의모임", "오늘의대회"],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "슈퍼베이스",
-    title: "슈퍼베이스 (Superbase) - 혁신적인 디지털 서비스",
-    description:
-      "슈퍼베이스는 다양한 디지털 서비스를 제공하는 개인사업자입니다.",
+    siteName: site.name,
+    url: site.url,
+    title: `${site.name} (${site.nameEn})`,
+    description: site.description,
   },
+  twitter: { card: "summary_large_image" },
+  other: { "google-adsense-account": site.adsense },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko">
-      <head>
-        <meta name="google-adsense-account" content="ca-pub-4113419530280094" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
-        />
-      </head>
-      <body className="antialiased min-h-screen flex flex-col">
+    <html lang="ko" className={pretendard.variable}>
+      <body className="flex min-h-screen flex-col font-sans">
+        <JsonLd data={[organizationJsonLd(site), webSiteJsonLd(site)]} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="mx-auto w-full max-w-[640px] flex-1 px-5 md:px-6">{children}</main>
         <Footer />
       </body>
     </html>
