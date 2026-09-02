@@ -1,0 +1,61 @@
+import Link from "next/link";
+import type { Product } from "@/content/work";
+import { groupWork, workPath, type WorkGroup } from "@/lib/work";
+import StatusBadge from "./StatusBadge";
+
+function ProductRow({ product }: { product: Product }) {
+  const ended = product.status === "ended";
+  return (
+    <li className="border-t border-line first:border-t-0">
+      <Link
+        href={workPath(product.slug)}
+        className="group grid grid-cols-[1fr_auto] gap-x-4 gap-y-1 py-3 md:grid-cols-[9rem_1fr_auto] md:items-center"
+      >
+        <span className={`font-semibold ${ended ? "text-fg-3" : "text-fg"} group-hover:underline`}>
+          {product.name}
+        </span>
+        <span className="row-start-2 col-span-2 text-sm text-fg-2 md:row-start-auto md:col-span-1">
+          <span className={ended ? "text-fg-3" : undefined}>{product.summary}</span>
+        </span>
+        <StatusBadge status={product.status} />
+      </Link>
+    </li>
+  );
+}
+
+function Group({ group }: { group: WorkGroup }) {
+  const { brand, products } = group;
+  return (
+    <div className="py-3">
+      <div className="mb-1 flex items-baseline justify-between">
+        {brand ? (
+          <Link href={workPath(brand.slug)} className="text-lg font-extrabold tracking-tight hover:underline">
+            {brand.name}
+          </Link>
+        ) : (
+          <span className="text-lg font-extrabold tracking-tight text-fg-3">단독 제품</span>
+        )}
+        {brand && (
+          <span className="text-xs text-fg-3">
+            {brand.summary} · {brand.since}~
+          </span>
+        )}
+      </div>
+      <ul className="md:pl-4">
+        {products.map((p) => (
+          <ProductRow key={p.slug} product={p} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function WorkList({ groups = groupWork() }: { groups?: WorkGroup[] }) {
+  return (
+    <div className="divide-y divide-line">
+      {groups.map((g) => (
+        <Group key={g.brand?.slug ?? "standalone"} group={g} />
+      ))}
+    </div>
+  );
+}
