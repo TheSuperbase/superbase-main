@@ -8,7 +8,7 @@ export default function Reveal({
   className?: string;
 }) {
   return (
-    <div className={`reveal ${className}`} style={{ animationDelay: `${index * 60}ms` }}>
+    <div className={className ? `reveal ${className}` : "reveal"} style={{ animationDelay: `${index * 60}ms` }}>
       {children}
     </div>
   );
