@@ -226,3 +226,19 @@ export type Product = {
 - 소셜 계정 실제 주소(자리만 둔다)
 - 오늘의대회 정식 설명과 URL(임시 문구 사용)
 - favicon 및 로고 제작
+
+## 11. 구현 중 변경 (2026-09-03)
+
+코드 리뷰를 거치며 스펙에서 달라진 점.
+
+- 회색 3단계 토큰 `--fg-3`를 대비 기준(AA 4.5:1)에 맞춰 라이트 #757575, 다크 #8f8f8f로 조정.
+- 루트 레이아웃의 canonical 기본값을 제거하고 각 페이지가 canonical을 명시.
+- 독립 텍스트 링크용 `TextLink` 컴포넌트 추가(44px 터치 영역, 새 창 링크 스크린리더 안내).
+- `Section`에 `size` prop 추가. 개인정보처리방침은 `lg`로 섹션 제목을 키움.
+- `WorkList`에 `showGroupHeader` prop 추가. 브랜드 상세에서 자기 브랜드 헤더를 중복 표시하지 않음.
+- `lib/work.ts`에 `findBrand`, `findProduct` 추가. `groupWork`는 브랜드 slug가 잘못된 제품을 단독 그룹으로 보냄.
+- `/work` 경로는 `/#work`로 308 리다이렉트. sitemap에서 제외.
+- 개인정보처리방침 시행일은 `content/site.ts`의 `privacyEffectiveDate`.
+- 폰트는 jsDelivr npm 미러(`npm/pretendard@1.3.9`)에서 받음. GitHub 경로는 404.
+- 스킵 링크, `role="list"`, 404 페이지 메타데이터(noindex) 추가.
+- 보류: 개인정보처리방침에서 각 제품의 자체 방침 링크는 제품 데이터에 URL 필드가 생긴 뒤 연결.
