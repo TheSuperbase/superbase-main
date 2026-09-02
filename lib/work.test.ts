@@ -75,6 +75,12 @@ describe("groupWork", () => {
     const groups = groupWork([b({ slug: "a" })], [p({ slug: "x", brand: "a" })]);
     expect(groups).toHaveLength(1);
   });
+
+  it("puts products whose brand is unknown into the standalone group", () => {
+    const groups = groupWork([b({ slug: "a" })], [p({ slug: "orphan", brand: "missing" })]);
+    expect(groups.map((g) => g.brand?.slug ?? null)).toEqual(["a", null]);
+    expect(groups[1].products.map((x) => x.slug)).toEqual(["orphan"]);
+  });
 });
 
 describe("findWork / productsOf / allWorkSlugs / workPath", () => {

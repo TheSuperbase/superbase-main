@@ -38,7 +38,8 @@ export function groupWork(
     brand,
     products: productsOf(brand.slug, products),
   }));
-  const standalone = sortProducts(products.filter((p) => !p.brand));
+  const known = new Set(sortedBrands.map((b) => b.slug));
+  const standalone = sortProducts(products.filter((p) => !p.brand || !known.has(p.brand)));
   if (standalone.length > 0) groups.push({ brand: null, products: standalone });
   return groups;
 }

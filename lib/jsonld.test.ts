@@ -29,7 +29,8 @@ describe("organizationJsonLd", () => {
 
 describe("webSiteJsonLd", () => {
   it("describes the site in Korean", () => {
-    expect(webSiteJsonLd(site)).toMatchObject({
+    expect(webSiteJsonLd(site)).toEqual({
+      "@context": "https://schema.org",
       "@type": "WebSite",
       name: "슈퍼베이스",
       alternateName: "Superbase",
