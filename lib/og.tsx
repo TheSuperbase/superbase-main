@@ -4,8 +4,10 @@ import { ImageResponse } from "next/og";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
-async function loadFont() {
-  return readFile(path.join(process.cwd(), "app/fonts/Pretendard-Bold.otf"));
+let fontPromise: Promise<Buffer> | undefined;
+function loadFont() {
+  fontPromise ??= readFile(path.join(process.cwd(), "app/fonts/Pretendard-Bold.otf"));
+  return fontPromise;
 }
 
 export async function renderOg(title: string, subtitle: string) {
