@@ -52,6 +52,14 @@ export function findWork(
   return brands.find((b) => b.slug === slug) ?? products.find((p) => p.slug === slug);
 }
 
+export function findBrand(slug: string, brands: Brand[] = allBrands): Brand | undefined {
+  return brands.find((b) => b.slug === slug);
+}
+
+export function findProduct(slug: string, products: Product[] = allProducts): Product | undefined {
+  return products.find((p) => p.slug === slug);
+}
+
 export function allWorkSlugs(
   brands: Brand[] = allBrands,
   products: Product[] = allProducts,

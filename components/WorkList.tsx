@@ -23,26 +23,28 @@ function ProductRow({ product }: { product: Product }) {
   );
 }
 
-function Group({ group }: { group: WorkGroup }) {
+function Group({ group, showHeader = true }: { group: WorkGroup; showHeader?: boolean }) {
   const { brand, products } = group;
   return (
     <div className="py-3">
-      <div className="mb-1 flex items-baseline justify-between">
-        <h3 className="text-lg font-extrabold tracking-tight">
-          {brand ? (
-            <Link href={workPath(brand.slug)} className="hover:underline">
-              {brand.name}
-            </Link>
-          ) : (
-            <span className="text-fg-3">단독 제품</span>
+      {showHeader && (
+        <div className="mb-1 flex items-baseline justify-between">
+          <h3 className="text-lg font-extrabold tracking-tight">
+            {brand ? (
+              <Link href={workPath(brand.slug)} className="hover:underline">
+                {brand.name}
+              </Link>
+            ) : (
+              <span className="text-fg-3">단독 제품</span>
+            )}
+          </h3>
+          {brand && (
+            <span className="text-xs text-fg-3">
+              {brand.summary} · {brand.since}~
+            </span>
           )}
-        </h3>
-        {brand && (
-          <span className="text-xs text-fg-3">
-            {brand.summary} · {brand.since}~
-          </span>
-        )}
-      </div>
+        </div>
+      )}
       <ul className="md:pl-4" role="list">
         {products.map((p) => (
           <ProductRow key={p.slug} product={p} />
@@ -52,11 +54,17 @@ function Group({ group }: { group: WorkGroup }) {
   );
 }
 
-export default function WorkList({ groups = groupWork() }: { groups?: WorkGroup[] }) {
+export default function WorkList({
+  groups = groupWork(),
+  showGroupHeader = true,
+}: {
+  groups?: WorkGroup[];
+  showGroupHeader?: boolean;
+}) {
   return (
     <div className="divide-y divide-line">
       {groups.map((g) => (
-        <Group key={g.brand?.slug ?? "standalone"} group={g} />
+        <Group key={g.brand?.slug ?? "standalone"} group={g} showHeader={showGroupHeader} />
       ))}
     </div>
   );

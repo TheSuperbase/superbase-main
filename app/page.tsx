@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
+import TextLink from "@/components/TextLink";
 import WorkList from "@/components/WorkList";
 import { site } from "@/content/site";
 import { now } from "@/content/now";
@@ -28,12 +29,8 @@ export default function Home() {
             시리즈를 만들고 있고, 다음은 전혀 다른 영역일 수도 있습니다.
           </p>
           <div className="mt-8 flex gap-6 text-sm font-semibold">
-            <Link href="/about" className="underline underline-offset-4 hover:text-fg-2">
-              소개 보기
-            </Link>
-            <a href={`mailto:${site.email}`} className="underline underline-offset-4 hover:text-fg-2">
-              이메일 보내기
-            </a>
+            <TextLink href="/about">소개 보기</TextLink>
+            <TextLink href={`mailto:${site.email}`}>이메일 보내기</TextLink>
           </div>
         </section>
       </Reveal>
@@ -60,24 +57,18 @@ export default function Home() {
       <Reveal index={3}>
         <Section label="연락">
           <p className="text-fg-2">제안, 협업, 그냥 인사도 환영합니다.</p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-2 inline-block font-semibold underline underline-offset-4 hover:text-fg-2"
-          >
-            {site.email}
-          </a>
+          <div className="mt-2 flex">
+            <TextLink href={`mailto:${site.email}`} className="font-semibold">
+              {site.email}
+            </TextLink>
+          </div>
           {site.social.length > 0 && (
-            <ul className="mt-3 flex gap-4 text-sm font-semibold">
+            <ul role="list" className="mt-3 flex gap-4 text-sm font-semibold">
               {site.social.map((s) => (
                 <li key={s.url}>
-                  <a
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-4 hover:text-fg-2"
-                  >
+                  <TextLink href={s.url} external>
                     {s.label}
-                  </a>
+                  </TextLink>
                 </li>
               ))}
             </ul>

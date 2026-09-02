@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
+import TextLink from "@/components/TextLink";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -22,29 +23,23 @@ export default function ContactPage() {
       </Reveal>
       <Reveal index={1}>
         <Section label="이메일">
-          <a
-            href={`mailto:${site.email}`}
-            className="text-xl font-semibold underline underline-offset-4 hover:text-fg-2"
-          >
-            {site.email}
-          </a>
+          <div className="flex">
+            <TextLink href={`mailto:${site.email}`} className="text-xl font-semibold">
+              {site.email}
+            </TextLink>
+          </div>
           <p className="mt-2 text-sm text-fg-3">보통 며칠 안에 답장합니다.</p>
         </Section>
       </Reveal>
       {site.social.length > 0 && (
         <Reveal index={2}>
           <Section label="소셜">
-            <ul className="flex gap-4 font-semibold">
+            <ul role="list" className="flex gap-4 font-semibold">
               {site.social.map((s) => (
                 <li key={s.url}>
-                  <a
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-4 hover:text-fg-2"
-                  >
+                  <TextLink href={s.url} external>
                     {s.label}
-                  </a>
+                  </TextLink>
                 </li>
               ))}
             </ul>

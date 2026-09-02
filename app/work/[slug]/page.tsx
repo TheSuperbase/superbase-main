@@ -10,7 +10,7 @@ import WorkList from "@/components/WorkList";
 import { site } from "@/content/site";
 import { formatPeriod } from "@/lib/date";
 import { workJsonLd } from "@/lib/jsonld";
-import { allWorkSlugs, findWork, productsOf, workPath } from "@/lib/work";
+import { allWorkSlugs, findBrand, findProduct, findWork, productsOf, workPath } from "@/lib/work";
 
 type Params = Promise<{ slug: string }>;
 
@@ -23,7 +23,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const work = findWork(slug);
-  if (!work) return {};
+  if (!work) notFound();
   return {
     title: work.name,
     description: work.summary,
@@ -37,8 +37,9 @@ export default async function WorkPage({ params }: { params: Params }) {
   const work = findWork(slug);
   if (!work) notFound();
 
-  const brand = work.kind === "product" && work.brand ? findWork(work.brand) : undefined;
-  const successor = work.kind === "product" && work.successor ? findWork(work.successor) : undefined;
+  const brand = work.kind === "product" && work.brand ? findBrand(work.brand) : undefined;
+  const successor =
+    work.kind === "product" && work.successor ? findProduct(work.successor) : undefined;
   const meta =
     work.kind === "brand" ? `${work.since}년 ~` : formatPeriod(work.period);
 
@@ -87,6 +88,7 @@ export default async function WorkPage({ params }: { params: Params }) {
               className="mt-6 inline-flex h-10 items-center gap-1 rounded-md bg-fg px-4 text-sm font-semibold text-bg transition-opacity duration-150 hover:opacity-80"
             >
               {work.name} 바로가기
+              <span className="sr-only"> (새 창에서 열림)</span>
               <span aria-hidden>↗</span>
             </a>
           )}
@@ -102,7 +104,7 @@ export default async function WorkPage({ params }: { params: Params }) {
       {work.kind === "brand" && (
         <Reveal index={2}>
           <Section label="제품" aside={`${productsOf(work.slug).length}개`}>
-            <WorkList groups={[{ brand: work, products: productsOf(work.slug) }]} />
+            <WorkList groups={[{ brand: work, products: productsOf(work.slug) }]} showGroupHeader={false} />
           </Section>
         </Reveal>
       )}

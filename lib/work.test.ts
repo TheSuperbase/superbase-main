@@ -5,6 +5,8 @@ import {
   sortProducts,
   groupWork,
   findWork,
+  findBrand,
+  findProduct,
   productsOf,
   allWorkSlugs,
   workPath,
@@ -103,6 +105,22 @@ describe("findWork / productsOf / allWorkSlugs / workPath", () => {
 
   it("builds the detail path", () => {
     expect(workPath("x")).toBe("/work/x");
+  });
+
+  it("finds a brand by slug with findBrand", () => {
+    expect(findBrand("a", brands)?.kind).toBe("brand");
+  });
+
+  it("does not find a product slug with findBrand", () => {
+    expect(findBrand("x", brands)).toBeUndefined();
+  });
+
+  it("finds a product by slug with findProduct", () => {
+    expect(findProduct("x", products)?.kind).toBe("product");
+  });
+
+  it("does not find a brand slug with findProduct", () => {
+    expect(findProduct("a", products)).toBeUndefined();
   });
 });
 

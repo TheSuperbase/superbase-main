@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Prose from "@/components/Prose";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
+import TextLink from "@/components/TextLink";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -60,12 +60,8 @@ export default function AboutPage() {
       <Reveal index={4}>
         <Section label="더 보기">
           <div className="flex gap-6 text-sm font-semibold">
-            <Link href="/#work" className="underline underline-offset-4 hover:text-fg-2">
-              만든 것들
-            </Link>
-            <Link href="/contact" className="underline underline-offset-4 hover:text-fg-2">
-              문의하기
-            </Link>
+            <TextLink href="/#work">만든 것들</TextLink>
+            <TextLink href="/contact">문의하기</TextLink>
           </div>
         </Section>
       </Reveal>

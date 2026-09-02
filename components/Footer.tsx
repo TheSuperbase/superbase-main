@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TextLink from "@/components/TextLink";
 import { site } from "@/content/site";
 
 export default function Footer() {
@@ -10,18 +10,8 @@ export default function Footer() {
           © {year} {site.name} ({site.nameEn}) · {site.business.type} {site.business.owner}
         </p>
         <div className="flex gap-4">
-          <a
-            href={`mailto:${site.email}`}
-            className="underline underline-offset-4 transition-colors duration-150 hover:text-fg"
-          >
-            {site.email}
-          </a>
-          <Link
-            href="/privacy"
-            className="underline underline-offset-4 transition-colors duration-150 hover:text-fg"
-          >
-            개인정보처리방침
-          </Link>
+          <TextLink href={`mailto:${site.email}`}>{site.email}</TextLink>
+          <TextLink href="/privacy">개인정보처리방침</TextLink>
         </div>
       </div>
     </footer>

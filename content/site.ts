@@ -11,6 +11,7 @@ export const site = {
   // 소셜 계정은 추후 추가. 예: { label: "GitHub", url: "https://github.com/..." }
   social: [] as { label: string; url: string }[],
   adsense: "ca-pub-4113419530280094",
+  privacyEffectiveDate: "2026년 9월 3일",
 };
 
 export type Site = typeof site;
