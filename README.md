@@ -20,7 +20,7 @@ pnpm build
 
 ```
 content/   사이트 정보, Now, 브랜드/제품 데이터 (모든 콘텐츠의 원본)
-lib/       정렬·그룹핑, 날짜, JSON-LD, OG 렌더러 (순수 함수, 테스트 있음)
+lib/       정렬·그룹핑, 날짜, JSON-LD, 페이지 메타데이터 (순수 함수, 테스트 있음) · OG 렌더러
 components/ Header, NavLink, Footer, Section, StatusBadge, WorkList, Reveal, Prose, TextLink, JsonLd
 app/       /, /about, /contact, /privacy, /work/[slug], sitemap, robots, OG 이미지
            app/work/page.tsx → /#work 리다이렉트
@@ -36,6 +36,18 @@ app/       /, /about, /contact, /privacy, /work/[slug], sitemap, robots, OG 이�
 - **개인정보처리방침 시행일**: content/site.ts의 privacyEffectiveDate
 
 항목을 추가하면 홈 목록, `/work/[slug]` 페이지, sitemap, OG 이미지, JSON-LD가 함께 생성된다.
+
+## 폰트
+
+본문 폰트 `app/fonts/PretendardVariable.woff2`는 전체 폰트(약 2MB)가 아니라 서브셋(약 460KB)이다. KS X 1001 한글 2,350자 + 라틴·문장부호·화살표·기호 범위 + 프로젝트 소스(`app/`, `components/`, `content/`)에 실제로 쓰인 한글을 모아 만들었다.
+
+```bash
+pipx run --spec "fonttools[woff]" pyftsubset PretendardVariable.woff2 \
+  --unicodes-file=unicodes.txt --flavor=woff2 --layout-features='*' \
+  --output-file=app/fonts/PretendardVariable.woff2
+```
+
+서브셋에 없는 문자(희귀 한자, KS X 1001 밖 한글 등)를 콘텐츠에 넣으면 그 글자만 시스템 폰트로 대체되어 보인다. 그런 문자가 필요하면 원본 Pretendard로 서브셋을 다시 만들어야 한다.
 
 ## 배포 후 확인
 

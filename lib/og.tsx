@@ -6,7 +6,10 @@ export const OG_SIZE = { width: 1200, height: 630 };
 
 let fontPromise: Promise<Buffer> | undefined;
 function loadFont() {
-  fontPromise ??= readFile(path.join(process.cwd(), "app/fonts/Pretendard-Bold.otf"));
+  fontPromise ??= readFile(path.join(process.cwd(), "app/fonts/Pretendard-Bold.otf")).catch((e) => {
+    fontPromise = undefined;
+    throw e;
+  });
   return fontPromise;
 }
 

@@ -8,8 +8,9 @@ import { site } from "@/content/site";
 import { now } from "@/content/now";
 import { brands, products } from "@/content/work";
 import { formatMonth } from "@/lib/date";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = pageMetadata({ description: site.description, path: "/" });
 
 export default function Home() {
   return (

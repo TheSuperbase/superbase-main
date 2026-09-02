@@ -50,7 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </a>
         <JsonLd data={[organizationJsonLd(site), webSiteJsonLd(site)]} />
         <Header />
-        <main id="main" className="mx-auto w-full max-w-[640px] flex-1 px-5 md:px-6">{children}</main>
+        <main id="main" tabIndex={-1} className="mx-auto w-full max-w-[640px] flex-1 px-5 md:px-6">{children}</main>
         <Footer />
       </body>
     </html>

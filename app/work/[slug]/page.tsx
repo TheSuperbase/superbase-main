@@ -8,8 +8,9 @@ import Section from "@/components/Section";
 import StatusBadge from "@/components/StatusBadge";
 import WorkList from "@/components/WorkList";
 import { site } from "@/content/site";
-import { formatPeriod } from "@/lib/date";
+import { formatMonth, formatPeriod } from "@/lib/date";
 import { workJsonLd } from "@/lib/jsonld";
+import { pageMetadata } from "@/lib/metadata";
 import { allWorkSlugs, findBrand, findProduct, findWork, productsOf, workPath } from "@/lib/work";
 
 type Params = Promise<{ slug: string }>;
@@ -24,12 +25,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { slug } = await params;
   const work = findWork(slug);
   if (!work) notFound();
-  return {
-    title: work.name,
-    description: work.summary,
-    alternates: { canonical: workPath(slug) },
-    openGraph: { title: work.name, description: work.summary, url: workPath(slug) },
-  };
+  return pageMetadata({ title: work.name, description: work.summary, path: workPath(slug) });
 }
 
 export default async function WorkPage({ params }: { params: Params }) {
@@ -41,7 +37,7 @@ export default async function WorkPage({ params }: { params: Params }) {
   const successor =
     work.kind === "product" && work.successor ? findProduct(work.successor) : undefined;
   const meta =
-    work.kind === "brand" ? `${work.since}년 ~` : formatPeriod(work.period);
+    work.kind === "brand" ? `${formatMonth(work.since)} ~` : formatPeriod(work.period);
 
   return (
     <div className="pb-8">

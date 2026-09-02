@@ -3,12 +3,13 @@ import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
 import TextLink from "@/components/TextLink";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "문의",
   description: `${site.name}에 제안, 협업, 피드백을 보내는 방법입니다.`,
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

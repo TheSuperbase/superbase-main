@@ -3,7 +3,6 @@ import TextLink from "@/components/TextLink";
 
 export const metadata: Metadata = {
   title: "페이지를 찾을 수 없습니다",
-  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

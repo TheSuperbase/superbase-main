@@ -4,6 +4,7 @@ import { allWorkSlugs, findWork } from "@/lib/work";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";
+export const alt = "슈퍼베이스가 만든 브랜드와 제품";
 
 export function generateStaticParams() {
   return allWorkSlugs().map((slug) => ({ slug }));

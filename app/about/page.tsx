@@ -4,12 +4,13 @@ import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
 import TextLink from "@/components/TextLink";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "소개",
   description: `${site.name}는 ${site.tagline}입니다. 왜 만들고 어떻게 운영하는지 소개합니다.`,
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const WHAT = [
   "슈퍼베이스(Superbase)는 혼자 만들고 직접 운영하는 1인 메이커입니다. 기획, 디자인, 개발, 운영을 한 사람이 처음부터 끝까지 맡습니다.",

@@ -75,6 +75,10 @@ describe("workJsonLd", () => {
     });
   });
 
+  it("omits offers for a product that is not live yet", () => {
+    expect(workJsonLd({ ...product, status: "soon" }, site)).not.toHaveProperty("offers");
+  });
+
   it("falls back to the detail page url when a product has no url", () => {
     const { url } = workJsonLd({ ...product, url: undefined }, site);
     expect(url).toBe("https://superbaseapp.com/work/oneul-moim");

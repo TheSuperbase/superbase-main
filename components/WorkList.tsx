@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Product } from "@/content/work";
+import { formatMonth } from "@/lib/date";
 import { groupWork, workPath, type WorkGroup } from "@/lib/work";
 import StatusBadge from "./StatusBadge";
 
@@ -40,7 +41,7 @@ function Group({ group, showHeader = true }: { group: WorkGroup; showHeader?: bo
           </h3>
           {brand && (
             <span className="text-xs text-fg-3">
-              {brand.summary} · {brand.since}~
+              {brand.summary} · {formatMonth(brand.since)} ~
             </span>
           )}
         </div>

@@ -51,7 +51,9 @@ export function workJsonLd(work: Work, site: SiteInfo) {
     url: work.url ?? pageUrl,
     applicationCategory: "WebApplication",
     operatingSystem: "Web",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" },
+    ...(work.status === "live"
+      ? { offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" } }
+      : {}),
     author: { "@type": "Organization", name: site.name, url: site.url },
   };
 }

@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import TextLink from "@/components/TextLink";
 import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "개인정보처리방침",
   description: `${site.name} 웹사이트(superbaseapp.com)의 개인정보처리방침입니다.`,
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 function P({ children }: { children: React.ReactNode }) {
   return <p className="text-fg-2">{children}</p>;
