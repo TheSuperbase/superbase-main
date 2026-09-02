@@ -10,10 +10,16 @@ export default function Footer() {
           © {year} {site.name} ({site.nameEn}) · {site.business.type} {site.business.owner}
         </p>
         <div className="flex gap-4">
-          <a href={`mailto:${site.email}`} className="transition-colors duration-150 hover:text-fg">
+          <a
+            href={`mailto:${site.email}`}
+            className="underline underline-offset-4 transition-colors duration-150 hover:text-fg"
+          >
             {site.email}
           </a>
-          <Link href="/privacy" className="transition-colors duration-150 hover:text-fg">
+          <Link
+            href="/privacy"
+            className="underline underline-offset-4 transition-colors duration-150 hover:text-fg"
+          >
             개인정보처리방침
           </Link>
         </div>

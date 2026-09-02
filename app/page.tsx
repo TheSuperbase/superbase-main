@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
@@ -6,6 +7,8 @@ import { site } from "@/content/site";
 import { now } from "@/content/now";
 import { brands, products } from "@/content/work";
 import { formatMonth } from "@/lib/date";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (

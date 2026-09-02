@@ -4,7 +4,7 @@
   --bg: #ffffff;
   --fg: #0a0a0a;
   --fg-2: #525252;
-  --fg-3: #8a8a8a;
+  --fg-3: #757575;
   --line: #e8e8e8;
   --live: #16a34a;
 }
@@ -14,7 +14,7 @@
     --bg: #0a0a0a;
     --fg: #ededed;
     --fg-2: #a3a3a3;
-    --fg-3: #737373;
+    --fg-3: #8f8f8f;
     --line: #262626;
     --live: #22c55e;
   }
@@ -33,6 +33,12 @@
 
 html {
   color-scheme: light dark;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
