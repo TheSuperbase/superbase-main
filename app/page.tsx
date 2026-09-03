@@ -19,27 +19,27 @@ export default function Home() {
   return (
     <>
       <Reveal>
-        <section className="pt-20 pb-20 text-center md:pt-28 md:pb-28">
+        <section className="pt-20 pb-20 md:pt-28 md:pb-28">
           <Container>
-            <h1 className="mx-auto max-w-[920px] text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
+            <h1 className="max-w-[920px] text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
               {mission.headline[0]}{" "}
               <br className="hidden md:inline" />
               {mission.headline[1]}
             </h1>
-            <p className="mx-auto mt-7 max-w-[640px] text-lg leading-relaxed text-fg-2 md:text-xl">
+            <p className="mt-7 max-w-[640px] text-lg leading-relaxed text-fg-2 md:text-xl">
               {leadBefore}
               <Link href="/work/oneul" className="font-semibold text-fg underline underline-offset-4">
                 {leadLink}
               </Link>
               {leadAfter}
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <div className="mt-10 flex flex-wrap gap-3">
               <Button href="/#products">서비스 둘러보기</Button>
               <Button href="/about" variant="ghost">
                 슈퍼베이스 소개
               </Button>
             </div>
-            <p className="mx-auto mt-12 flex max-w-[640px] items-start gap-3 rounded-[20px] bg-surface px-5 py-3 text-left text-sm text-fg-2 md:inline-flex md:items-center md:rounded-full md:py-2.5">
+            <p className="mt-12 flex max-w-[640px] items-start gap-3 rounded-[20px] bg-surface px-5 py-3 text-sm text-fg-2 md:inline-flex md:items-center md:rounded-full md:py-2.5">
               <span aria-hidden className="mt-2 h-2 w-2 shrink-0 rounded-full bg-live md:mt-0" />
               <span>{now.text}</span>
               <span className="hidden shrink-0 text-fg-3 md:inline">{formatMonth(now.updatedAt)}</span>
