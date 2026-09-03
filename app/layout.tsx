@@ -7,10 +7,10 @@ import JsonLd from "@/components/JsonLd";
 import { site } from "@/content/site";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/jsonld";
 
-const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
-  variable: "--font-pretendard",
-  weight: "45 920",
+const suite = localFont({
+  src: "./fonts/SUITE-Variable.woff2",
+  variable: "--font-suite",
+  weight: "300 900",
   display: "swap",
 });
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" className={pretendard.variable}>
+    <html lang="ko" className={suite.variable}>
       <body className="flex min-h-screen flex-col font-sans">
         <a
           href="#main"

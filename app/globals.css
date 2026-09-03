@@ -23,7 +23,7 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-live: var(--live);
-  --font-sans: var(--font-pretendard), -apple-system, BlinkMacSystemFont,
+  --font-sans: var(--font-suite), -apple-system, BlinkMacSystemFont,
     "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 }
 

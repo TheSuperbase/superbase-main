@@ -257,3 +257,4 @@ export type Product = {
 - 회사 문구는 `content/company.ts`. 브랜드 표기는 "오늘 시리즈". 소식 섹션은 보류. 푸터 사업자 정보는 상호·대표·이메일까지.
 - 홈 섹션 id가 `products`로 바뀌어 `/work`와 `/services` 리다이렉트도 `/#products`로 갱신.
 - 다크 모드 제거. 라이트 테마만 지원(`color-scheme: light`).
+- 본문·OG 폰트를 Pretendard에서 SUITE Variable(sun-typeface/SUITE@2)로 교체. 로컬 호스팅 + 서브셋 방식은 유지.
