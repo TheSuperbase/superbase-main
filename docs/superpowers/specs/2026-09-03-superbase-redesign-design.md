@@ -256,3 +256,4 @@ export type Product = {
 - 액센트 블루(#1d55e0 라이트 / #6d93ff 다크)는 배지·포커스에만. 버튼은 검정.
 - 회사 문구는 `content/company.ts`. 브랜드 표기는 "오늘 시리즈". 소식 섹션은 보류. 푸터 사업자 정보는 상호·대표·이메일까지.
 - 홈 섹션 id가 `products`로 바뀌어 `/work`와 `/services` 리다이렉트도 `/#products`로 갱신.
+- 다크 모드 제거. 라이트 테마만 지원(`color-scheme: light`).

@@ -6,7 +6,7 @@
 
 - 모든 콘텐츠는 `content/`에서 읽는다. 페이지에 문구를 하드코딩하지 않는다 (법적 문서 제외).
 - 화자는 슈퍼베이스. 3인칭 브랜드 화법 "~합니다". 개인 이름은 푸터와 개인정보처리방침에만. 회사 문구는 `content/company.ts`.
-- 색은 `globals.css`의 토큰(bg, surface, fg, fg-2, fg-3, line, accent, accent-soft, live)만 쓴다. 새 색을 추가하지 않는다. 버튼은 검정(fg), 액센트 블루는 배지·포커스·강조에만.
+- 라이트 테마만 지원한다(다크 모드 없음). 색은 `globals.css`의 토큰(bg, surface, fg, fg-2, fg-3, line, accent, accent-soft, live)만 쓴다. 새 색을 추가하지 않는다. 버튼은 검정(fg), 액센트 블루는 배지·포커스·강조에만.
 - 회사 랜딩 톤. 컨테이너 1200px(`Container`), 긴 글은 760px(`Container narrow`). 섹션은 `Section`(제목+리드, surface 배경 옵션). 그림자, 그라디언트 금지. 카드는 1px 선 + 20px 라운드.
 - 모션은 홈 히어로의 `.reveal` 한 번과 150ms 전환, 버튼 press scale(0.97, motion-safe)만. `prefers-reduced-motion` 존중.
 - 클라이언트 컴포넌트는 `NavLink` 하나. 새로 추가할 때는 이유가 필요하다.

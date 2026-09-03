@@ -12,19 +12,6 @@
   --live: #16a34a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e0f12;
-    --surface: #16181d;
-    --fg: #f2f3f5;
-    --fg-2: #a6acb8;
-    --fg-3: #8f96a3;
-    --line: #272a31;
-    --accent: #6d93ff;
-    --accent-soft: #182240;
-    --live: #22c55e;
-  }
-}
 
 @theme inline {
   --color-bg: var(--bg);
@@ -41,7 +28,7 @@
 }
 
 html {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: no-preference) {
