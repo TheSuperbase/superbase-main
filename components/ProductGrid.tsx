@@ -54,17 +54,21 @@ function NextCard() {
   return (
     <Link
       href="/contact"
-      className="flex h-full min-h-[220px] flex-col items-center justify-center rounded-[20px] border-2 border-dashed border-line p-6 text-center transition-[border-color] duration-150 hover:border-fg-3"
+      className="flex flex-col items-start gap-4 rounded-[20px] border-2 border-dashed border-line px-7 py-6 transition-[border-color] duration-150 hover:border-fg-3 md:flex-row md:items-center md:justify-between"
     >
-      <span
-        aria-hidden
-        className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-dashed border-line text-xl text-fg-3"
-      >
-        +
+      <span className="flex items-center gap-4">
+        <span
+          aria-hidden
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-line text-xl text-fg-3"
+        >
+          +
+        </span>
+        <span>
+          <span className="block font-bold">다음 서비스를 준비하고 있습니다</span>
+          <span className="block text-sm text-fg-2">불편한 것이 있다면 알려주세요.</span>
+        </span>
       </span>
-      <span className="mt-4 font-bold">다음 서비스를 준비하고 있습니다</span>
-      <span className="mt-1 text-sm text-fg-2">불편한 것이 있다면 알려주세요.</span>
-      <span className="sr-only"> 문의하기로 이동</span>
+      <span className="text-sm font-semibold text-fg-3">문의하기</span>
     </Link>
   );
 }
@@ -112,11 +116,7 @@ export default function ProductGrid({
           </ul>
         </div>
       ))}
-      {withNext && (
-        <div className={GRID}>
-          <NextCard />
-        </div>
-      )}
+      {withNext && <NextCard />}
     </div>
   );
 }
