@@ -22,8 +22,8 @@ export default function Home() {
         <section className="pt-20 pb-20 text-center md:pt-28 md:pb-28">
           <Container>
             <h1 className="mx-auto max-w-[920px] text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
-              {mission.headline[0]}
-              <br className="hidden md:block" />
+              {mission.headline[0]}{" "}
+              <br className="hidden md:inline" />
               {mission.headline[1]}
             </h1>
             <p className="mx-auto mt-7 max-w-[640px] text-lg leading-relaxed text-fg-2 md:text-xl">

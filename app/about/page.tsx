@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "소개",
-  description: `${site.name}는 ${site.tagline}. 무엇을 왜 만들고 어떻게 운영하는지 소개합니다.`,
+  description: `${site.name}는 ${site.tagline}입니다. 무엇을 왜 만들고 어떻게 운영하는지 소개합니다.`,
   path: "/about",
 });
 

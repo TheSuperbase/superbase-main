@@ -10,6 +10,7 @@ import {
   productsOf,
   allWorkSlugs,
   workPath,
+  hostOf,
 } from "./work";
 
 const b = (o: Partial<Brand> & { slug: string }): Brand => ({
@@ -149,5 +150,15 @@ describe("content/work.ts data integrity", () => {
     for (const p of products) {
       expect(Boolean(p.period.to), `${p.slug} period.to`).toBe(p.status === "ended");
     }
+  });
+});
+
+describe("hostOf", () => {
+  it("returns the host of an absolute url", () => {
+    expect(hostOf("https://pc.oneul.day/path")).toBe("pc.oneul.day");
+  });
+  it("returns null for missing or malformed urls", () => {
+    expect(hostOf(undefined)).toBeNull();
+    expect(hostOf("/relative")).toBeNull();
   });
 });

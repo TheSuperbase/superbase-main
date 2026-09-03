@@ -23,15 +23,15 @@ content/   사이트 정보, 회사 문구(company), Now, 브랜드/제품 데�
 lib/       정렬·그룹핑, 날짜, JSON-LD, 페이지 메타데이터 (순수 함수, 테스트 있음) · OG 렌더러
 components/ Header, NavLink, Footer, Container, Section, Button, ProductGrid, StatusBadge, Reveal, Prose, TextLink, JsonLd
 app/       /, /about, /contact, /privacy, /work/[slug], sitemap, robots, OG 이미지
-           app/work/page.tsx → /#work 리다이렉트
+           app/work/page.tsx → /#products 리다이렉트
 ```
 
 ## 콘텐츠 갱신
 
 - **지금 하는 일**: `content/now.ts`의 `text`와 `updatedAt`(YYYY-MM)을 고친다.
 - **브랜드 추가**: `content/work.ts`의 `brands`에 항목을 넣는다. 허브 도메인이 생기면 `url`을 채운다.
-- **제품 추가**: `products`에 항목을 넣고 `brand`에 소속 브랜드 slug를 적는다. 단독 제품이면 생략. `status`는 `live | soon | ended`.
-- **제품 종료**: `status: "ended"`, `period.to`, 후속이 있으면 `successor`를 적는다.
+- **서비스 추가**: `products`에 항목을 넣고 `brand`에 소속 브랜드 slug를 적는다. 단독 서비스면 생략. `status`는 `live | soon | ended`.
+- **서비스 종료**: `status: "ended"`, `period.to`, 후속이 있으면 `successor`를 적는다.
 - **소셜 링크**: `content/site.ts`의 `social`에 `{ label, url }`을 넣는다.
 - **개인정보처리방침 시행일**: content/site.ts의 privacyEffectiveDate
 
@@ -53,7 +53,7 @@ pipx run --spec "fonttools[woff]" pyftsubset PretendardVariable.woff2 \
 
 - 대표 도메인은 `www.superbaseapp.com` (Vercel이 apex → www 리다이렉트). 바꾸려면 Vercel 도메인 설정과 `content/site.ts`의 url을 함께 수정
 - Google Search Console에 `https://www.superbaseapp.com/sitemap.xml` 제출
-- 각 제품 푸터에서 superbaseapp.com으로 링크
+- 각 서비스 푸터에서 superbaseapp.com으로 링크
 
 ## 연락
 

@@ -5,9 +5,9 @@
   --surface: #f5f6f8;
   --fg: #14161a;
   --fg-2: #4b515c;
-  --fg-3: #737a87;
+  --fg-3: #666d7a;
   --line: #e5e7eb;
-  --accent: #2f6bff;
+  --accent: #1d55e0;
   --accent-soft: #e9f0ff;
   --live: #16a34a;
 }
@@ -64,7 +64,6 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
 /* 페이지 진입 모션: 히어로에서만 한 번 쓴다. */

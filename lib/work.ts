@@ -70,3 +70,13 @@ export function allWorkSlugs(
 export function workPath(slug: string): string {
   return `/work/${slug}`;
 }
+
+/** 절대 URL의 host. 상대 경로나 잘못된 값이면 null. */
+export function hostOf(url?: string): string | null {
+  if (!url) return null;
+  try {
+    return new URL(url).host;
+  } catch {
+    return null;
+  }
+}

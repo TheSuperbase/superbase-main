@@ -246,3 +246,13 @@ export type Product = {
 - 옛 URL(/services/*, /terms)은 next.config.ts에서 308 리다이렉트.
 - 보류: 개인정보처리방침에서 각 제품의 자체 방침 링크는 제품 데이터에 URL 필드가 생긴 뒤 연결.
 - 배포 후 확인: Vercel이 apex → www로 리다이렉트하므로 `site.url`을 www로 통일 (canonical, sitemap, OG url, JSON-LD 모두 여기서 파생).
+
+## 12. 2차 리디자인: 회사 랜딩 톤 (2026-09-03)
+
+배포 직후 사용자가 방향을 바꿈. "1인 메이커 포트폴리오"가 아니라 회사 랜딩페이지 톤, 폭 1200px. 레퍼런스는 `docs/superpowers/research/2026-09-03-landing-references.md` (Panic 구조 + 당근 팀 톤). 데이터, lib, SEO 층은 유지하고 표현층만 교체.
+
+- 히어로: 회사 미션 문장 먼저(사용자 제공 문구). 화법은 "~합니다".
+- 컨테이너 1200px(`Container`), 긴 글 760px(`narrow`). `Section`(제목+리드, surface 배경), `Button`(필, primary/ghost/inverse), `ProductGrid`(브랜드 그룹 > 카드 3열, 다음 서비스 카드).
+- 액센트 블루(#1d55e0 라이트 / #6d93ff 다크)는 배지·포커스에만. 버튼은 검정.
+- 회사 문구는 `content/company.ts`. 브랜드 표기는 "오늘 시리즈". 소식 섹션은 보류. 푸터 사업자 정보는 상호·대표·이메일까지.
+- 홈 섹션 id가 `products`로 바뀌어 `/work`와 `/services` 리다이렉트도 `/#products`로 갱신.

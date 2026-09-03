@@ -44,7 +44,7 @@ export default function PrivacyPage() {
         <p className="mt-3 text-sm text-fg-3">시행일 {site.privacyEffectiveDate}</p>
         <div className="mt-4">
           <P>
-            {site.name}(이하 &quot;슈퍼베이스&quot;)는 superbaseapp.com 웹사이트(이하 &quot;사이트&quot;)를 운영하면서 개인정보 보호법 등 관련 법령을 준수합니다. 이 방침은 사이트에 적용되며, 슈퍼베이스가 운영하는 각 제품(오늘의모임 등)은 해당 제품의 개인정보처리방침을 따릅니다.
+            {site.name}(이하 &quot;슈퍼베이스&quot;)는 superbaseapp.com 웹사이트(이하 &quot;사이트&quot;)를 운영하면서 개인정보 보호법 등 관련 법령을 준수합니다. 이 방침은 사이트에 적용되며, 슈퍼베이스가 운영하는 각 서비스(오늘의모임 등)는 해당 서비스의 개인정보처리방침을 따릅니다.
           </P>
         </div>
       </section>
