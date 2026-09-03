@@ -1,81 +1,88 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Button from "@/components/Button";
+import Container from "@/components/Container";
+import ProductGrid from "@/components/ProductGrid";
 import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
-import TextLink from "@/components/TextLink";
-import WorkList from "@/components/WorkList";
-import { site } from "@/content/site";
+import { mission, principles } from "@/content/company";
 import { now } from "@/content/now";
-import { brands, products } from "@/content/work";
+import { site } from "@/content/site";
 import { formatMonth } from "@/lib/date";
 import { pageMetadata } from "@/lib/metadata";
+import { groupWork } from "@/lib/work";
 
 export const metadata: Metadata = pageMetadata({ description: site.description, path: "/" });
 
 export default function Home() {
+  const [leadBefore, leadLink, leadAfter] = mission.lead;
   return (
-    <div className="pb-8">
-      <Reveal index={0}>
-        <section className="pt-14 pb-10 md:pt-20">
-          <h1 className="text-[clamp(2rem,6vw,3.25rem)] font-extrabold leading-[1.15] tracking-[-0.035em]">
-            슈퍼베이스는 혼자 만들고
-            <br />
-            직접 운영합니다.
-          </h1>
-          <p className="mt-6 max-w-[34rem] text-lg text-fg-2">
-            일상에서 마주친 불편을 작은 제품으로 풀어냅니다. 지금은{" "}
-            <Link href="/work/oneul" className="font-semibold text-fg underline underline-offset-4">
-              오늘
-            </Link>{" "}
-            시리즈를 만들고 있고, 다음은 전혀 다른 영역일 수도 있습니다.
-          </p>
-          <div className="mt-8 flex gap-6 text-sm font-semibold">
-            <TextLink href="/about">소개 보기</TextLink>
-            <TextLink href={`mailto:${site.email}`}>이메일 보내기</TextLink>
-          </div>
+    <>
+      <Reveal>
+        <section className="pt-20 pb-20 text-center md:pt-28 md:pb-28">
+          <Container>
+            <h1 className="mx-auto max-w-[920px] text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[1.12] tracking-[-0.035em]">
+              {mission.headline[0]}
+              <br className="hidden md:block" />
+              {mission.headline[1]}
+            </h1>
+            <p className="mx-auto mt-7 max-w-[640px] text-lg leading-relaxed text-fg-2 md:text-xl">
+              {leadBefore}
+              <Link href="/work/oneul" className="font-semibold text-fg underline underline-offset-4">
+                {leadLink}
+              </Link>
+              {leadAfter}
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <Button href="/#products">서비스 둘러보기</Button>
+              <Button href="/about" variant="ghost">
+                슈퍼베이스 소개
+              </Button>
+            </div>
+            <p className="mx-auto mt-12 flex max-w-[640px] items-start gap-3 rounded-[20px] bg-surface px-5 py-3 text-left text-sm text-fg-2 md:inline-flex md:items-center md:rounded-full md:py-2.5">
+              <span aria-hidden className="mt-2 h-2 w-2 shrink-0 rounded-full bg-live md:mt-0" />
+              <span>{now.text}</span>
+              <span className="hidden shrink-0 text-fg-3 md:inline">{formatMonth(now.updatedAt)}</span>
+            </p>
+          </Container>
         </section>
       </Reveal>
 
-      <Reveal index={1}>
-        <Section label="NOW" aside={formatMonth(now.updatedAt)}>
-          <p className="flex items-start gap-3">
-            <span aria-hidden className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-live" />
-            <span>{now.text}</span>
-          </p>
-        </Section>
-      </Reveal>
+      <Section
+        id="products"
+        surface
+        title="슈퍼베이스가 만드는 서비스"
+        lead="하나의 불편에서 하나의 서비스가 시작됩니다. 시리즈로 묶어 함께 키워갑니다."
+      >
+        <ProductGrid groups={groupWork()} withNext />
+      </Section>
 
-      <Reveal index={2}>
-        <Section
-          id="work"
-          label="만든 것들"
-          aside={`브랜드 ${brands.length} · 제품 ${products.length}`}
-        >
-          <WorkList />
-        </Section>
-      </Reveal>
+      <Section title="이렇게 일합니다" lead="작게 만들고, 직접 쓰고, 사용자의 이야기를 듣고 고칩니다.">
+        <ul role="list" className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {principles.map((p) => (
+            <li key={p.title} className="rounded-[20px] border border-line p-7">
+              <h3 className="text-xl font-extrabold tracking-[-0.02em]">{p.title}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-fg-2">{p.text}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-      <Reveal index={3}>
-        <Section label="연락">
-          <p className="text-fg-2">제안, 협업, 그냥 인사도 환영합니다.</p>
-          <div className="mt-2 flex">
-            <TextLink href={`mailto:${site.email}`} className="font-semibold">
-              {site.email}
-            </TextLink>
+      <section className="pb-24">
+        <Container>
+          <div className="flex flex-col gap-8 rounded-[28px] bg-fg px-8 py-12 text-bg md:flex-row md:items-center md:justify-between md:px-16 md:py-16">
+            <div>
+              <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-extrabold leading-tight tracking-[-0.03em]">
+                제안, 협업, 그냥 인사도 환영합니다.
+              </h2>
+              <p className="mt-3 text-lg text-bg/70">{site.email}로 보내 주시면 며칠 안에 답장합니다.</p>
+            </div>
+            <Button href={`mailto:${site.email}`} variant="inverse">
+              이메일 보내기
+            </Button>
           </div>
-          {site.social.length > 0 && (
-            <ul role="list" className="mt-3 flex gap-4 text-sm font-semibold">
-              {site.social.map((s) => (
-                <li key={s.url}>
-                  <TextLink href={s.url} external>
-                    {s.label}
-                  </TextLink>
-                </li>
-              ))}
-            </ul>
-          )}
-        </Section>
-      </Reveal>
-    </div>
+        </Container>
+      </section>
+    </>
   );
 }

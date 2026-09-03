@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Button from "@/components/Button";
+import Container from "@/components/Container";
 import JsonLd from "@/components/JsonLd";
+import ProductGrid from "@/components/ProductGrid";
 import Prose from "@/components/Prose";
-import Reveal from "@/components/Reveal";
 import Section from "@/components/Section";
 import StatusBadge from "@/components/StatusBadge";
-import WorkList from "@/components/WorkList";
 import { site } from "@/content/site";
 import { formatMonth, formatPeriod } from "@/lib/date";
 import { workJsonLd } from "@/lib/jsonld";
@@ -37,37 +38,37 @@ export default async function WorkPage({ params }: { params: Params }) {
   const successor =
     work.kind === "product" && work.successor ? findProduct(work.successor) : undefined;
   const meta =
-    work.kind === "brand" ? `${formatMonth(work.since)} ~` : formatPeriod(work.period);
+    work.kind === "brand" ? `${formatMonth(work.since)}부터` : formatPeriod(work.period);
+  const title = work.kind === "brand" ? `${work.name} 시리즈` : work.name;
 
   return (
-    <div className="pb-8">
+    <>
       <JsonLd data={workJsonLd(work, site)} />
-      <Reveal index={0}>
-        <section className="pt-12 pb-8 md:pt-16">
+      <section className="pt-20 pb-16 md:pt-28">
+        <Container narrow>
           {brand && (
             <Link
               href={workPath(brand.slug)}
-              className="-my-1 inline-flex items-center gap-1 py-1 text-sm text-fg-3 transition-colors duration-150 hover:text-fg"
+              className="-my-1 inline-block py-1 text-sm font-semibold text-fg-3 transition-colors duration-150 hover:text-fg"
             >
-              {brand.name}
-              <span aria-hidden>↖</span>
+              {brand.name} 시리즈
             </Link>
           )}
-          <div className="mt-2 flex flex-wrap items-center gap-3">
-            <h1 className="text-[clamp(1.75rem,5vw,2.5rem)] font-extrabold leading-tight tracking-[-0.03em]">
-              {work.name}
+          <div className="mt-3 flex flex-wrap items-center gap-4">
+            <h1 className="text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-tight tracking-[-0.035em]">
+              {title}
             </h1>
             {work.kind === "product" && <StatusBadge status={work.status} />}
           </div>
-          <p className="mt-3 text-lg text-fg-2">{work.summary}</p>
+          <p className="mt-5 text-xl text-fg-2">{work.summary}</p>
           <p className="mt-2 text-sm text-fg-3">{meta}</p>
           {work.kind === "product" && work.status === "ended" && (
-            <p className="mt-4 rounded-md border border-line px-4 py-3 text-sm text-fg-2">
-              이 제품은 운영을 종료했습니다.
+            <p className="mt-6 rounded-[16px] bg-surface px-5 py-4 text-[15px] text-fg-2">
+              이 서비스는 운영을 종료했습니다.
               {successor && (
                 <>
                   {" "}
-                  후속 제품은{" "}
+                  후속 서비스는{" "}
                   <Link href={workPath(successor.slug)} className="font-semibold text-fg underline underline-offset-4">
                     {successor.name}
                   </Link>
@@ -77,33 +78,32 @@ export default async function WorkPage({ params }: { params: Params }) {
             </p>
           )}
           {work.url && (
-            <a
-              href={work.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex h-10 items-center gap-1 rounded-md bg-fg px-4 text-sm font-semibold text-bg transition-opacity duration-150 hover:opacity-80"
-            >
-              {work.name} 바로가기
-              <span className="sr-only"> (새 창에서 열림)</span>
-              <span aria-hidden>↗</span>
-            </a>
+            <div className="mt-8">
+              <Button href={work.url} external>
+                {work.name} 바로가기
+              </Button>
+            </div>
           )}
-        </section>
-      </Reveal>
+        </Container>
+      </section>
 
-      <Reveal index={1}>
-        <Section label="소개">
-          <Prose paragraphs={work.description} />
-        </Section>
-      </Reveal>
+      <section className="pb-20">
+        <Container narrow>
+          <h2 className="text-2xl font-extrabold tracking-[-0.02em]">소개</h2>
+          <div className="mt-4">
+            <Prose paragraphs={work.description} />
+          </div>
+        </Container>
+      </section>
 
       {work.kind === "brand" && (
-        <Reveal index={2}>
-          <Section label="제품" aside={`${productsOf(work.slug).length}개`}>
-            <WorkList groups={[{ brand: work, products: productsOf(work.slug) }]} showGroupHeader={false} />
-          </Section>
-        </Reveal>
+        <Section surface title="시리즈의 서비스">
+          <ProductGrid
+            groups={[{ brand: work, products: productsOf(work.slug) }]}
+            showGroupHeader={false}
+          />
+        </Section>
       )}
-    </div>
+    </>
   );
 }

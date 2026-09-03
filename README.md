@@ -1,6 +1,6 @@
 # superbaseapp.com
 
-슈퍼베이스(Superbase)의 웹사이트. 혼자 만들고 직접 운영하는 1인 메이커 슈퍼베이스를 소개하고, 만든 브랜드와 제품을 보여준다.
+슈퍼베이스(Superbase)의 회사 웹사이트. 생활 속 불편을 더 나은 서비스로 만드는 슈퍼베이스를 소개하고, 만든 브랜드와 서비스를 보여준다.
 
 ## 스택
 
@@ -19,9 +19,9 @@ pnpm build
 ## 구조
 
 ```
-content/   사이트 정보, Now, 브랜드/제품 데이터 (모든 콘텐츠의 원본)
+content/   사이트 정보, 회사 문구(company), Now, 브랜드/제품 데이터 (모든 콘텐츠의 원본)
 lib/       정렬·그룹핑, 날짜, JSON-LD, 페이지 메타데이터 (순수 함수, 테스트 있음) · OG 렌더러
-components/ Header, NavLink, Footer, Section, StatusBadge, WorkList, Reveal, Prose, TextLink, JsonLd
+components/ Header, NavLink, Footer, Container, Section, Button, ProductGrid, StatusBadge, Reveal, Prose, TextLink, JsonLd
 app/       /, /about, /contact, /privacy, /work/[slug], sitemap, robots, OG 이미지
            app/work/page.tsx → /#work 리다이렉트
 ```

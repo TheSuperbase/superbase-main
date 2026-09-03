@@ -1,29 +1,34 @@
+import Container from "./Container";
+
 export default function Section({
   id,
-  label,
-  aside,
-  size = "sm",
+  title,
+  lead,
+  action,
+  surface = false,
   children,
 }: {
   id?: string;
-  label: string;
-  aside?: string;
-  size?: "sm" | "lg";
+  title: string;
+  lead?: string;
+  action?: React.ReactNode;
+  surface?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t border-line py-8">
-      <div className="mb-4 flex items-baseline justify-between">
-        <h2
-          className={
-            size === "lg" ? "text-base font-bold text-fg" : "text-xs font-bold tracking-wide text-fg-3"
-          }
-        >
-          {label}
-        </h2>
-        {aside && <span className="text-xs text-fg-3">{aside}</span>}
-      </div>
-      {children}
+    <section id={id} className={`scroll-mt-20 py-20 md:py-24 ${surface ? "bg-surface" : ""}`}>
+      <Container>
+        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="text-[clamp(1.75rem,3.2vw,2.5rem)] font-extrabold leading-tight tracking-[-0.03em]">
+              {title}
+            </h2>
+            {lead && <p className="mt-3 max-w-[40rem] text-lg text-fg-2">{lead}</p>}
+          </div>
+          {action}
+        </div>
+        {children}
+      </Container>
     </section>
   );
 }

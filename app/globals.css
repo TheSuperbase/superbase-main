@@ -2,30 +2,39 @@
 
 :root {
   --bg: #ffffff;
-  --fg: #0a0a0a;
-  --fg-2: #525252;
-  --fg-3: #757575;
-  --line: #e8e8e8;
+  --surface: #f5f6f8;
+  --fg: #14161a;
+  --fg-2: #4b515c;
+  --fg-3: #737a87;
+  --line: #e5e7eb;
+  --accent: #2f6bff;
+  --accent-soft: #e9f0ff;
   --live: #16a34a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0a0a0a;
-    --fg: #ededed;
-    --fg-2: #a3a3a3;
-    --fg-3: #8f8f8f;
-    --line: #262626;
+    --bg: #0e0f12;
+    --surface: #16181d;
+    --fg: #f2f3f5;
+    --fg-2: #a6acb8;
+    --fg-3: #8f96a3;
+    --line: #272a31;
+    --accent: #6d93ff;
+    --accent-soft: #182240;
     --live: #22c55e;
   }
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-surface: var(--surface);
   --color-fg: var(--fg);
   --color-fg-2: var(--fg-2);
   --color-fg-3: var(--fg-3);
   --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-live: var(--live);
   --font-sans: var(--font-pretendard), -apple-system, BlinkMacSystemFont,
     "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
@@ -53,15 +62,16 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
+/* 페이지 진입 모션: 히어로에서만 한 번 쓴다. */
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -70,11 +80,19 @@ body {
 }
 
 .reveal {
-  animation: rise 280ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 360ms cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
-    animation: none;
+    animation: fade 200ms ease both;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

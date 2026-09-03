@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
-  keywords: [site.name, site.nameEn, "1인 메이커", "오늘의모임", "오늘의대회"],
+  keywords: [site.name, site.nameEn, "슈퍼베이스 회사", "오늘의모임", "오늘의대회"],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
@@ -44,13 +44,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="flex min-h-screen flex-col font-sans">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-fg focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-bg"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-bg"
         >
           본문 바로가기
         </a>
         <JsonLd data={[organizationJsonLd(site), webSiteJsonLd(site)]} />
         <Header />
-        <main id="main" tabIndex={-1} className="mx-auto w-full max-w-[640px] flex-1 px-5 md:px-6">{children}</main>
+        <main id="main" tabIndex={-1} className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -9,6 +9,7 @@ export type Brand = {
   description: string[];
   since: string; // YYYY
   url?: string; // 브랜드 허브. 아직 없으면 생략
+  image?: string; // /public 경로의 대표 이미지. 아직 없으면 생략
 };
 
 export type Product = {
@@ -22,6 +23,7 @@ export type Product = {
   url?: string;
   period: { from: string; to?: string }; // YYYY 또는 YYYY-MM
   successor?: string; // 종료 시 후속 제품 slug
+  image?: string; // /public 경로의 스크린샷. 아직 없으면 생략
 };
 
 export type Work = Brand | Product;
@@ -31,7 +33,7 @@ export const brands: Brand[] = [
     kind: "brand",
     slug: "oneul",
     name: "오늘",
-    summary: "배드민턴 동호인의 하루를 위한 제품 시리즈",
+    summary: "동호인 스포츠를 위한 서비스 시리즈. 지금은 배드민턴부터.",
     description: [
       "오늘은 동네 배드민턴 클럽과 동호인이 매일 겪는 일을 다루는 제품 시리즈입니다. 모임을 만들고, 대회를 찾고, 코트에서 만나는 하루를 조금 더 단순하게 만듭니다.",
       "각 제품은 하나의 불편에서 출발합니다. 단톡방 세 개로 돌아가던 모임 운영, 흩어져 있는 대회 정보 같은 것들입니다.",
