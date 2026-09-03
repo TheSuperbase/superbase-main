@@ -4,7 +4,7 @@
 
 ## 스택
 
-Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · pnpm · vitest · SUITE Variable (로컬 호스팅) · Vercel
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · pnpm · vitest · SUIT Variable (로컬 호스팅) · Vercel
 
 ## 시작
 
@@ -39,15 +39,15 @@ app/       /, /about, /contact, /privacy, /work/[slug], sitemap, robots, OG 이�
 
 ## 폰트
 
-본문 폰트 `app/fonts/SUITE-Variable.woff2`는 전체 폰트(약 536KB)가 아니라 서브셋이다. OG 이미지는 `app/fonts/SUITE-Bold.otf`를 쓴다. KS X 1001 한글 2,350자 + 라틴·문장부호·화살표·기호 범위 + 프로젝트 소스(`app/`, `components/`, `content/`)에 실제로 쓰인 한글을 모아 만들었다.
+본문 폰트 `app/fonts/SUIT-Variable.woff2`는 전체 폰트(약 625KB)가 아니라 서브셋이다. OG 이미지는 `app/fonts/SUIT-Bold.otf`를 쓴다. KS X 1001 한글 2,350자 + 라틴·문장부호·화살표·기호 범위 + 프로젝트 소스(`app/`, `components/`, `content/`)에 실제로 쓰인 한글을 모아 만들었다.
 
 ```bash
-pipx run --spec "fonttools[woff]" pyftsubset SUITE-Variable.woff2 \
+pipx run --spec "fonttools[woff]" pyftsubset SUIT-Variable.woff2 \
   --unicodes-file=unicodes.txt --flavor=woff2 --layout-features='*' \
-  --output-file=app/fonts/SUITE-Variable.woff2
+  --output-file=app/fonts/SUIT-Variable.woff2
 ```
 
-서브셋에 없는 문자(희귀 한자, KS X 1001 밖 한글 등)를 콘텐츠에 넣으면 그 글자만 시스템 폰트로 대체되어 보인다. 그런 문자가 필요하면 원본 SUITE Variable(sun-typeface/SUITE)로 서브셋을 다시 만들어야 한다.
+서브셋에 없는 문자(희귀 한자, KS X 1001 밖 한글 등)를 콘텐츠에 넣으면 그 글자만 시스템 폰트로 대체되어 보인다. 그런 문자가 필요하면 원본 SUIT Variable(sun-typeface/SUIT)로 서브셋을 다시 만들어야 한다.
 
 ## 배포 후 확인
 

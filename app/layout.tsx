@@ -8,9 +8,9 @@ import { site } from "@/content/site";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/jsonld";
 
 const suite = localFont({
-  src: "./fonts/SUITE-Variable.woff2",
+  src: "./fonts/SUIT-Variable.woff2",
   variable: "--font-suite",
-  weight: "300 900",
+  weight: "100 900",
   display: "swap",
 });
 

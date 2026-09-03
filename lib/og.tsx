@@ -6,7 +6,7 @@ export const OG_SIZE = { width: 1200, height: 630 };
 
 let fontPromise: Promise<Buffer> | undefined;
 function loadFont() {
-  fontPromise ??= readFile(path.join(process.cwd(), "app/fonts/SUITE-Bold.otf")).catch((e) => {
+  fontPromise ??= readFile(path.join(process.cwd(), "app/fonts/SUIT-Bold.otf")).catch((e) => {
     fontPromise = undefined;
     throw e;
   });
@@ -27,7 +27,7 @@ export async function renderOg(title: string, subtitle: string) {
           padding: 80,
           background: "#ffffff",
           color: "#0a0a0a",
-          fontFamily: "SUITE",
+          fontFamily: "SUIT",
         }}
       >
         <div style={{ fontSize: 28, color: "#8a8a8a" }}>superbaseapp.com</div>
@@ -40,7 +40,7 @@ export async function renderOg(title: string, subtitle: string) {
     ),
     {
       ...OG_SIZE,
-      fonts: [{ name: "SUITE", data: font, weight: 700, style: "normal" }],
+      fonts: [{ name: "SUIT", data: font, weight: 700, style: "normal" }],
     },
   );
 }
